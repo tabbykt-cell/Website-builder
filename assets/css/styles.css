@@ -303,7 +303,17 @@ figure, blockquote { margin: 0; }
 }
 
 .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.brand__mark { width: 34px; height: 34px; flex: none; }
+/* The mark is a roundel with the wordmark inside it, so it needs a little
+   more room than a bare glyph would to read as a badge. Its background is
+   black and the page ground is a near-black, so a hairline ring is what
+   makes the badge edge visible at all. */
+.brand__mark {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(239, 231, 217, 0.18);
+}
 .brand__text { min-width: 0; }
 .brand__name {
   display: block;
@@ -1097,7 +1107,7 @@ figure, blockquote { margin: 0; }
   border-top: 1px solid var(--line-2);
 }
 .footer__brand { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
-.footer__brand .brand__mark { width: 42px; height: 42px; }
+.footer__brand .brand__mark { width: 46px; height: 46px; }
 .footer__text { font-size: 14px; color: var(--muted); max-width: 40ch; margin-bottom: 22px; }
 
 .footer__cols {
@@ -1763,7 +1773,7 @@ figure, blockquote { margin: 0; }
   .dock { display: none; }
   .footer { padding-bottom: 30px; }
 
-  .brand__mark { width: 40px; height: 40px; }
+  .brand__mark { width: 46px; height: 46px; }
   .brand__name { font-size: 18px; }
   .brand__sub { font-size: 10px; }
 

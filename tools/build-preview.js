@@ -178,18 +178,15 @@ async function build() {
 
   const fontCss = await buildFontCss();
   const siteCss = read('assets/css/styles.css');
-  const logoSvg = read('assets/img/logo.svg')
-    .replace(/<\?xml[^>]*\?>\s*/, '')
-    .replace(/\s+/g, ' ')
-    .trim();
 
   // Inline the logo so the file has zero external requests.
-  const logoUri = 'data:image/svg+xml;base64,' + Buffer.from(logoSvg).toString('base64');
+  const logoUri = 'data:image/png;base64,' +
+    fs.readFileSync(path.join(ROOT, 'assets', 'img', 'logo.png')).toString('base64');
 
   // Every markup fragment goes through the same pass: ASCII-escape it, and
   // swap the logo file reference for an inline data URI.
   const prep = function (s) {
-    return inlineImages(asciiHtml(s).split('assets/img/logo.svg').join(logoUri));
+    return inlineImages(asciiHtml(s).split('assets/img/logo.png').join(logoUri));
   };
 
   const sprite = prep(mergedSprite(indexHtml, bookHtml));

@@ -51,7 +51,7 @@ assets/
     app.js              Header, drawer, dock, image fallbacks, toast
     home.js             Renders the homepage from data.js
     booking.js          The 4-step booking wizard
-  img/logo.svg          Logo — the shop sign's plank boards and rusted B
+  img/logo.png          The shop's logo — black roundel, shears, wordmark
   images/               ← DROP PHOTOS HERE (see images/README.md)
 tools/build-preview.js  Bundles everything into one shareable file
 ```
@@ -224,8 +224,15 @@ red, cream and slate blue, rusted iron lettering, black pipe frame, brick wall.
 | `#efe7d9` | Cream | White plank. Text |
 
 The diagonal stripe down the left of the hero repeats the sign's plank
-sequence — red, cream, slate, cream. The logo is the sign itself: plank boards
-in a pipe frame with a rusted slab `B`.
+sequence — red, cream, slate, cream.
+
+The logo is the shop's own: a black roundel with a tan flame, barber shears and
+the BUSHWACKER wordmark. It arrived as a photo of a screen, so it was
+de-screened (median filter to kill the pixel grid), snapped back to its three
+flat colours, masked to a circle with a transparent surround and quantised to a
+9 KB palette PNG. Because its ground is black and the page ground is a
+near-black, `.brand__mark` carries a hairline cream ring — without it the
+roundel's edge is invisible and the mark reads as a floating flame.
 
 **Type** — Bevan (display), Oswald (headings and UI), Barlow (body), loaded
 from Google Fonts with system fallbacks. Bevan is a wood-type slab serif,

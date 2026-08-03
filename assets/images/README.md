@@ -18,6 +18,7 @@ Real shop photos, resized and compressed for mobile data — every one is under
 | `gallery-4.jpg` | Gallery | Half-up style with loose curls |
 | `gallery-5.jpg` | Gallery | Blonde updo, three angles |
 | `barber-chris.jpg` | Chris's team card + booking picker | Chris at the chair, cropped to 4:5 |
+| `favicon.png` | Browser tab icon | The logo on the page's ink colour |
 
 ## Still needed
 
@@ -25,7 +26,6 @@ Real shop photos, resized and compressed for mobile data — every one is under
 |---|---|---|---|
 | `barber-kelby.jpg` | Kelby's team card + booking picker | 800 × 1000 | Portrait 4:5, face in the top third |
 | `og-image.jpg` | Link preview when the site is shared on text / Facebook / iMessage | 1200 × 630 | Landscape |
-| `favicon.png` | Browser tab icon | 512 × 512 | Square. Currently falls back to `assets/img/logo.svg` |
 
 Until Kelby's photo is added, that card shows a large **K** on a textured
 panel — deliberate, not an error.

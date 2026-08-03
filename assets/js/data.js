@@ -1,54 +1,67 @@
 /* =============================================================================
-   Bushwacker Barber Shop — Site Data
+   Bushwacker Barber Shop - Site Data
    -----------------------------------------------------------------------------
    EVERYTHING the site displays lives in this one file. Edit here, nowhere else.
 
-   >>> ITEMS MARKED "PLACEHOLDER" ARE PLACEHOLDERS. Replace before going live. <<<
-   Service names are taken verbatim from the shop's Google Business listing.
-   Prices and durations are estimates and MUST be confirmed by the shop.
+   Confirmed from the shop's sign, its Google Business listing and the owner:
+   name, second name (The Refinery Room), address, phone, service names and
+   the two barbers.
+
+   >>> ITEMS MARKED "PLACEHOLDER" STILL NEED CONFIRMING BEFORE GOING LIVE. <<<
    ============================================================================= */
 
 /* -----------------------------------------------------------------------------
-   1. SHOP DETAILS  —  PLACEHOLDER: confirm every value in this block.
+   1. SHOP DETAILS
    -------------------------------------------------------------------------- */
 const SHOP = {
   name: 'Bushwacker Barber Shop',
+
+  /* The shop sign reads "BUSHWACKER BARBER SHOP / THE REFINERY ROOM".
+     Treated here as a second name for the same business - if The Refinery
+     Room is actually a separate salon side with its own staff, split the
+     colour and waxing services out to those stylists in section 3. */
+  secondName: 'The Refinery Room',
+
   tagline: 'Cut Clean. Walk Tall.',
   blurb:
-    'A proper barber shop — hot towels, straight razors and a fade that holds ' +
-    'its line all week. Walk-ins welcome, appointments always beat the wait.',
+    'A long-running barber shop in Broad Street Square - haircuts, beard ' +
+    'trims and straight razor work. Walk-ins welcome and the wait is short.',
 
-  phone: '(555) 555-0134',              // PLACEHOLDER
-  phoneHref: '+15555550134',            // PLACEHOLDER
+  phone: '(910) 331-4629',
+  phoneHref: '+19103314629',
   email: 'hello@bushwackerbarber.com',  // PLACEHOLDER
 
   address: {
-    line1: '1200 Marshall Ave',         // PLACEHOLDER
-    line2: 'Suite B',                   // PLACEHOLDER
-    city: 'Norwood',                    // PLACEHOLDER
-    state: 'VA',                        // PLACEHOLDER
-    zip: '24333'                        // PLACEHOLDER
+    line1: '801 E Broad Ave #11',
+    line2: 'Broad Street Square',
+    city: 'Rockingham',
+    state: 'NC',
+    zip: '28379'
   },
 
-  // Used for the "Get Directions" button. Any maps URL works.
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bushwacker+Barber+Shop',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=' +
+           encodeURIComponent('Bushwacker Barber Shop, 801 E Broad Ave #11, Rockingham, NC 28379'),
 
   social: {
     instagram: 'https://instagram.com/',  // PLACEHOLDER
     facebook: 'https://facebook.com/',    // PLACEHOLDER
-    google: 'https://www.google.com/maps/search/?api=1&query=Bushwacker+Barber+Shop'
+    google: 'https://www.google.com/maps/search/?api=1&query=' +
+            encodeURIComponent('Bushwacker Barber Shop, 801 E Broad Ave #11, Rockingham, NC 28379')
   },
 
-  /* Lobby hours shown on the site. Separate from barber schedules (section 4),
-     which is what the booking engine actually reads. 24h "HH:MM", null = closed. */
+  /* PLACEHOLDER - only one data point is confirmed: the Google listing showed
+     "Open - Closes 5 PM" on a Monday afternoon, so weekdays close at 5. The
+     opening times and the weekend are assumptions. Get the real hours from
+     the shop and correct this block and the schedules in section 4 together.
+     24h "HH:MM", null = closed. */
   hours: [
-    { day: 'Sunday',    open: null,    close: null  },
-    { day: 'Monday',    open: '09:00', close: '18:00' },
-    { day: 'Tuesday',   open: '09:00', close: '18:00' },
-    { day: 'Wednesday', open: '09:00', close: '18:00' },
-    { day: 'Thursday',  open: '09:00', close: '19:00' },
-    { day: 'Friday',    open: '09:00', close: '19:00' },
-    { day: 'Saturday',  open: '08:00', close: '16:00' }
+    { day: 'Sunday',    open: null,    close: null    },
+    { day: 'Monday',    open: '09:00', close: '17:00' },
+    { day: 'Tuesday',   open: '09:00', close: '17:00' },
+    { day: 'Wednesday', open: '09:00', close: '17:00' },
+    { day: 'Thursday',  open: '09:00', close: '17:00' },
+    { day: 'Friday',    open: '09:00', close: '17:00' },
+    { day: 'Saturday',  open: '08:00', close: '14:00' }
   ]
 };
 
@@ -149,52 +162,44 @@ SERVICE_CATEGORIES.forEach(function (cat) {
 });
 
 /* -----------------------------------------------------------------------------
-   3. BARBERS  —  PLACEHOLDER: names, bios and photos.
-   `photo` points at assets/images/. Missing files fall back to initials,
-   so the site looks finished before the real photos land.
-   `skills` lists service IDs. A barber is only offered for services they do.
+   3. BARBERS
+   Chris and Kelby are the shop's two barbers - confirmed by the owner.
+   Titles, blurbs and specialties below are PLACEHOLDER wording written to be
+   safely generic; replace with how Chris and Kelby actually describe
+   themselves. `photo` points at assets/images/ - a missing file falls back to
+   initials, so the site looks finished before the photos land.
+
+   `skills` lists the service IDs a barber performs. Both currently do
+   everything; if Chris and Kelby split the work - or if The Refinery Room's
+   colour and waxing services are handled by different stylists - remove those
+   IDs here and the booking tool stops offering that barber for them.
    -------------------------------------------------------------------------- */
+const ALL_SERVICE_IDS = [
+  'mens-cut', 'cut-shave', 'buzz-cut', 'stylish-cut', 'dry-cut',
+  'womens-cut', 'womens-dry', 'kids-cut',
+  'razor-shave', 'head-shave', 'beard-trim', 'beard-cond', 'beard-oil',
+  'color-treat', 'hair-dying', 'root-touch', 'brow-tint', 'blow-dry',
+  'brow-wax', 'facial-wax', 'womens-wax'
+];
+
 const BARBERS = [
   {
-    id: 'marcus',
-    name: 'Marcus',
-    title: 'Master Barber · Owner',
-    photo: 'assets/images/barber-marcus.jpg',
-    bio: 'Twenty-two years behind the chair. Straight razor work is his religion.',
-    specialties: ['Skin fades', 'Straight razor', 'Beard shaping'],
-    skills: ['mens-cut', 'cut-shave', 'buzz-cut', 'stylish-cut', 'dry-cut', 'kids-cut',
-             'razor-shave', 'head-shave', 'beard-trim', 'beard-cond', 'beard-oil']
+    id: 'chris',
+    name: 'Chris',
+    title: 'Barber',                                        // PLACEHOLDER
+    photo: 'assets/images/barber-chris.jpg',
+    bio: 'Cuts, fades and beard work. Walk-ins welcome.',    // PLACEHOLDER
+    specialties: ['Fades', 'Beard work', 'Straight razor'],  // PLACEHOLDER
+    skills: ALL_SERVICE_IDS
   },
   {
-    id: 'tony',
-    name: 'Tony',
-    title: 'Master Barber',
-    photo: 'assets/images/barber-tony.jpg',
-    bio: 'Fast hands, sharp lines. The go-to for a high & tight that stays crisp.',
-    specialties: ['Hard parts', 'High & tight', 'Kids cuts'],
-    skills: ['mens-cut', 'cut-shave', 'buzz-cut', 'stylish-cut', 'dry-cut', 'kids-cut',
-             'razor-shave', 'head-shave', 'beard-trim', 'beard-oil']
-  },
-  {
-    id: 'renae',
-    name: 'Renae',
-    title: 'Stylist & Color Specialist',
-    photo: 'assets/images/barber-renae.jpg',
-    bio: 'Color, grey blending and cuts that grow out as good as they go in.',
-    specialties: ['Color', 'Grey blending', "Women's cuts"],
-    skills: ['mens-cut', 'stylish-cut', 'dry-cut', 'womens-cut', 'womens-dry', 'kids-cut',
-             'color-treat', 'hair-dying', 'root-touch', 'brow-tint', 'blow-dry',
-             'brow-wax', 'facial-wax', 'womens-wax']
-  },
-  {
-    id: 'cole',
-    name: 'Cole',
-    title: 'Barber',
-    photo: 'assets/images/barber-cole.jpg',
-    bio: 'Newest to the shop, first to say yes to a walk-in. Modern styles.',
-    specialties: ['Textured crops', 'Taper fades', 'Beard trims'],
-    skills: ['mens-cut', 'buzz-cut', 'stylish-cut', 'dry-cut', 'kids-cut',
-             'beard-trim', 'beard-oil', 'head-shave', 'brow-wax', 'facial-wax']
+    id: 'kelby',
+    name: 'Kelby',
+    title: 'Barber',                                        // PLACEHOLDER
+    photo: 'assets/images/barber-kelby.jpg',
+    bio: 'Cuts, fades and beard work. Walk-ins welcome.',    // PLACEHOLDER
+    specialties: ['Fades', 'Kids cuts', 'Beard trims'],      // PLACEHOLDER
+    skills: ALL_SERVICE_IDS
   }
 ];
 
@@ -202,39 +207,28 @@ const BARBERS_BY_ID = {};
 BARBERS.forEach(function (b) { BARBERS_BY_ID[b.id] = b; });
 
 /* -----------------------------------------------------------------------------
-   4. BARBER SCHEDULES — what the booking engine actually reads.
+   4. BARBER SCHEDULES - what the booking engine actually reads.
+   PLACEHOLDER: these follow the shop hours in section 1, which are themselves
+   mostly assumed. Replace with each barber's real days and times.
    Keys 0-6 = Sunday-Saturday. Omit a day (or use null) for a day off.
    `breaks` are blocked windows (lunch, standing appointments).
    -------------------------------------------------------------------------- */
 const SCHEDULES = {
-  marcus: {
-    1: { start: '09:00', end: '18:00', breaks: [['12:30', '13:30']] },
-    2: { start: '09:00', end: '18:00', breaks: [['12:30', '13:30']] },
-    3: { start: '09:00', end: '18:00', breaks: [['12:30', '13:30']] },
-    4: { start: '09:00', end: '19:00', breaks: [['13:00', '14:00']] },
-    5: { start: '09:00', end: '19:00', breaks: [['13:00', '14:00']] },
-    6: { start: '08:00', end: '16:00', breaks: [] }
+  chris: {
+    1: { start: '09:00', end: '17:00', breaks: [['12:00', '13:00']] },
+    2: { start: '09:00', end: '17:00', breaks: [['12:00', '13:00']] },
+    3: { start: '09:00', end: '17:00', breaks: [['12:00', '13:00']] },
+    4: { start: '09:00', end: '17:00', breaks: [['12:00', '13:00']] },
+    5: { start: '09:00', end: '17:00', breaks: [['12:00', '13:00']] },
+    6: { start: '08:00', end: '14:00', breaks: [] }
   },
-  tony: {
-    2: { start: '09:00', end: '18:00', breaks: [['12:00', '13:00']] },
-    3: { start: '09:00', end: '18:00', breaks: [['12:00', '13:00']] },
-    4: { start: '10:00', end: '19:00', breaks: [['14:00', '15:00']] },
-    5: { start: '10:00', end: '19:00', breaks: [['14:00', '15:00']] },
-    6: { start: '08:00', end: '16:00', breaks: [] }
-  },
-  renae: {
-    1: { start: '10:00', end: '18:00', breaks: [['13:00', '14:00']] },
-    3: { start: '10:00', end: '18:00', breaks: [['13:00', '14:00']] },
-    4: { start: '10:00', end: '19:00', breaks: [['13:00', '14:00']] },
-    5: { start: '09:00', end: '17:00', breaks: [['12:30', '13:30']] },
-    6: { start: '08:00', end: '15:00', breaks: [] }
-  },
-  cole: {
-    1: { start: '11:00', end: '18:00', breaks: [] },
-    2: { start: '11:00', end: '18:00', breaks: [['15:00', '15:30']] },
-    3: { start: '09:00', end: '17:00', breaks: [['12:00', '12:30']] },
-    4: { start: '11:00', end: '19:00', breaks: [] },
-    5: { start: '11:00', end: '19:00', breaks: [] }
+  kelby: {
+    1: { start: '09:00', end: '17:00', breaks: [['13:00', '14:00']] },
+    2: { start: '09:00', end: '17:00', breaks: [['13:00', '14:00']] },
+    3: { start: '10:00', end: '17:00', breaks: [] },
+    4: { start: '09:00', end: '17:00', breaks: [['13:00', '14:00']] },
+    5: { start: '09:00', end: '17:00', breaks: [['13:00', '14:00']] },
+    6: { start: '08:00', end: '14:00', breaks: [] }
   }
 };
 

@@ -16,6 +16,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const crypto = require('crypto');
 
 const ROOT = path.join(__dirname, '..');
 const read = function (p) { return fs.readFileSync(path.join(ROOT, p), 'utf8'); };
@@ -27,7 +28,7 @@ const read = function (p) { return fs.readFileSync(path.join(ROOT, p), 'utf8'); 
    -------------------------------------------------------------------------- */
 const FONT_CSS_URL =
   'https://fonts.googleapis.com/css2' +
-  '?family=Alfa+Slab+One' +
+  '?family=Bevan' +
   '&family=Oswald:wght@400;500;600' +
   '&family=Barlow:wght@400;500;600' +
   '&display=swap';
@@ -69,7 +70,12 @@ async function cached(key, loader) {
 }
 
 async function buildFontCss() {
-  const css = (await cached('fonts.css', function () {
+  // Key the cache on the request URL so changing the families re-fetches
+  // instead of quietly serving the previous build's typefaces.
+  const key = 'fonts-' +
+    crypto.createHash('sha1').update(FONT_CSS_URL).digest('hex').slice(0, 10) + '.css';
+
+  const css = (await cached(key, function () {
     return fetch(FONT_CSS_URL, false).then(function (t) { return Buffer.from(t); });
   })).toString('utf8');
 

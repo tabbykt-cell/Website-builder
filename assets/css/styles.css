@@ -8,32 +8,46 @@
    Design tokens
    -------------------------------------------------------------------------- */
 :root {
-  /* Palette — dark shop interior, pine, brass and bone */
-  --ink:        #0d0f10;
-  --ink-2:      #14181a;
-  --ink-3:      #1b2124;
-  --ink-4:      #232b2e;
+  /* Palette - taken from the shop sign: weathered plank boards in barn red,
+     cream and slate blue, rusted iron letters, dark pipe frame, brick wall.
+     The grounds are warm near-blacks biased brown, like the charred brick. */
+  --ink:        #16110f;
+  --ink-2:      #1e1815;
+  --ink-3:      #2a211d;
+  --ink-4:      #382c26;
 
-  --pine:       #1f3d31;
-  --pine-2:     #2b5745;
-  --pine-lite:  #3d7c62;
+  --brick:      #8b3a32;   /* red plank */
+  --brick-2:    #a34438;
+  --brick-lite: #c25a4a;
 
-  --brass:      #c8974a;
-  --brass-lite: #e2b76b;
-  --brass-dim:  #8a6730;
+  --slate:      #4e626b;   /* blue-grey plank */
+  --slate-2:    #5f757f;
+  --slate-lite: #86a0aa;
 
-  --rust:       #a8443c;
+  --rust:       #b0672f;   /* the letters - primary accent */
+  --rust-lite:  #d68f4b;
+  --rust-dim:   #7d4720;
 
-  --bone:       #f3efe6;
-  --bone-dim:   #cfc9bc;
-  --muted:      #8e9895;
-  --muted-2:    #667370;
+  --cream:      #efe7d9;   /* weathered white plank */
+  --cream-dim:  #cabfad;
+  --muted:      #9a8d7e;
+  --muted-2:    #6f6458;
 
-  --line:       rgba(243, 239, 230, 0.10);
-  --line-2:     rgba(243, 239, 230, 0.06);
+  --line:       rgba(239, 231, 217, 0.11);
+  --line-2:     rgba(239, 231, 217, 0.06);
+
+  /* Kept so existing rules keep working after the retheme. */
+  --bone:       var(--cream);
+  --bone-dim:   var(--cream-dim);
+  --pine:       var(--slate);
+  --pine-2:     var(--slate-2);
+  --pine-lite:  var(--slate-lite);
+  --brass:      var(--rust);
+  --brass-lite: var(--rust-lite);
+  --brass-dim:  var(--rust-dim);
 
   /* Type */
-  --font-display: 'Alfa Slab One', Georgia, 'Times New Roman', serif;
+  --font-display: 'Bevan', 'Alfa Slab One', Georgia, serif;
   --font-head:    'Oswald', 'Helvetica Neue', Arial, sans-serif;
   --font-body:    'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
@@ -86,7 +100,7 @@ body::before {
   z-index: 0;
   opacity: 0.5;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(31, 61, 49, 0.55), transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139, 58, 50, 0.30), transparent 70%),
     repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0 2px, transparent 2px 5px);
 }
 
@@ -205,7 +219,7 @@ p:last-child { margin-bottom: 0; }
    -------------------------------------------------------------------------- */
 .btn {
   --btn-bg: var(--brass);
-  --btn-fg: #17120a;
+  --btn-fg: #1a120c;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -223,7 +237,7 @@ p:last-child { margin-bottom: 0; }
   text-transform: uppercase;
   text-align: center;
   transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
-  box-shadow: 0 4px 16px rgba(200, 151, 74, 0.22);
+  box-shadow: 0 4px 16px rgba(176, 103, 47, 0.28);
   -webkit-tap-highlight-color: transparent;
 }
 .btn:hover { background: var(--brass-lite); }
@@ -235,7 +249,7 @@ p:last-child { margin-bottom: 0; }
   border: 1.5px solid var(--line);
   box-shadow: none;
 }
-.btn--ghost:hover { background: rgba(243, 239, 230, 0.07); border-color: var(--brass); }
+.btn--ghost:hover { background: rgba(239, 231, 217, 0.07); border-color: var(--brass); }
 
 .btn--pine {
   --btn-bg: var(--pine-2);
@@ -301,11 +315,16 @@ p:last-child { margin-bottom: 0; }
   display: block;
   font-family: var(--font-head);
   font-size: 9.5px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--brass);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+/* The sign's second name only fits once there is room for it. */
+.brand__sub2 { display: none; }
+@media (min-width: 420px) { .brand__sub2 { display: inline; } }
 
 .header__actions { display: flex; align-items: center; gap: 8px; }
 
@@ -313,14 +332,14 @@ p:last-child { margin-bottom: 0; }
   width: 42px; height: 42px;
   display: grid;
   place-items: center;
-  background: rgba(243, 239, 230, 0.06);
+  background: rgba(239, 231, 217, 0.06);
   border: 1px solid var(--line);
   border-radius: 12px;
   color: var(--bone);
   transition: background 0.2s var(--ease);
   -webkit-tap-highlight-color: transparent;
 }
-.icon-btn:hover { background: rgba(243, 239, 230, 0.12); }
+.icon-btn:hover { background: rgba(239, 231, 217, 0.12); }
 .icon-btn svg { width: 20px; height: 20px; }
 
 .nav-desktop { display: none; }
@@ -452,7 +471,7 @@ p:last-child { margin-bottom: 0; }
   inset: 0;
   background:
     linear-gradient(to top, var(--ink) 4%, rgba(13, 15, 16, 0.55) 45%, rgba(13, 15, 16, 0.7) 100%),
-    radial-gradient(circle at 70% 15%, rgba(31, 61, 49, 0.5), transparent 60%);
+    radial-gradient(circle at 70% 15%, rgba(78, 98, 107, 0.38), transparent 60%);
 }
 
 /* Barber-pole stripe running down the left edge */
@@ -461,14 +480,15 @@ p:last-child { margin-bottom: 0; }
   top: 0; bottom: 0; left: 0;
   width: 7px;
   z-index: -1;
+  /* The sign's plank boards: barn red, cream, slate, cream. */
   background: repeating-linear-gradient(
     -45deg,
-    var(--rust) 0 10px,
-    var(--bone) 10px 20px,
-    var(--pine-2) 20px 30px,
-    var(--bone) 30px 40px
+    var(--brick) 0 10px,
+    var(--cream) 10px 20px,
+    var(--slate) 20px 30px,
+    var(--cream) 30px 40px
   );
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .hero__content { position: relative; }
@@ -478,8 +498,8 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   gap: 8px;
   padding: 7px 14px;
-  background: rgba(31, 61, 49, 0.55);
-  border: 1px solid rgba(200, 151, 74, 0.35);
+  background: rgba(78, 98, 107, 0.42);
+  border: 1px solid rgba(176, 103, 47, 0.38);
   border-radius: 999px;
   font-family: var(--font-head);
   font-size: 11.5px;
@@ -634,7 +654,7 @@ p:last-child { margin-bottom: 0; }
 .svc-tab.is-active {
   background: var(--brass);
   border-color: var(--brass);
-  color: #17120a;
+  color: #1a120c;
 }
 
 .svc-panel { display: none; }
@@ -661,7 +681,7 @@ p:last-child { margin-bottom: 0; }
   position: relative;
 }
 .svc-item:hover { border-color: var(--brass-dim); transform: translateY(-2px); }
-.svc-item.is-featured { border-color: rgba(200, 151, 74, 0.35); }
+.svc-item.is-featured { border-color: rgba(176, 103, 47, 0.38); }
 
 .svc-item__body { flex: 1; min-width: 0; }
 .svc-item__name {
@@ -681,7 +701,7 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--brass);
-  border: 1px solid rgba(200, 151, 74, 0.4);
+  border: 1px solid rgba(176, 103, 47, 0.42);
   border-radius: 4px;
   padding: 2px 6px;
 }
@@ -740,7 +760,7 @@ p:last-child { margin-bottom: 0; }
   white-space: nowrap;
   transition: all 0.2s var(--ease);
 }
-.svc-book:hover { background: var(--brass); border-color: var(--brass); color: #17120a; }
+.svc-book:hover { background: var(--brass); border-color: var(--brass); color: #1a120c; }
 
 .price-note {
   margin-top: 20px;
@@ -860,7 +880,7 @@ p:last-child { margin-bottom: 0; }
     radial-gradient(circle at 50% 35%, var(--pine-2), var(--ink-3) 70%);
   font-family: var(--font-display);
   font-size: clamp(38px, 14vw, 62px);
-  color: rgba(243, 239, 230, 0.22);
+  color: rgba(239, 231, 217, 0.22);
   letter-spacing: 0.02em;
 }
 
@@ -1092,7 +1112,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: 12px;
   transition: all 0.2s var(--ease);
 }
-.socials a:hover { background: var(--brass); color: #17120a; border-color: var(--brass); }
+.socials a:hover { background: var(--brass); color: #1a120c; border-color: var(--brass); }
 .socials svg { width: 19px; height: 19px; }
 
 .footer__bottom {
@@ -1146,15 +1166,15 @@ p:last-child { margin-bottom: 0; }
   gap: 11px;
   align-items: flex-start;
   padding: 13px 15px;
-  background: rgba(168, 68, 60, 0.10);
-  border: 1px solid rgba(168, 68, 60, 0.34);
+  background: rgba(194, 90, 74, 0.10);
+  border: 1px solid rgba(194, 90, 74, 0.34);
   border-radius: var(--radius-sm);
   font-size: 13px;
   line-height: 1.55;
   color: var(--bone-dim);
   margin-bottom: 22px;
 }
-.demo-note svg { width: 17px; height: 17px; color: var(--rust); flex: none; margin-top: 1px; }
+.demo-note svg { width: 17px; height: 17px; color: var(--brick-lite); flex: none; margin-top: 1px; }
 .demo-note b { color: var(--bone); }
 
 /* Stepper */
@@ -1234,7 +1254,7 @@ p:last-child { margin-bottom: 0; }
 .opt:hover { border-color: var(--brass-dim); }
 .opt.is-selected {
   border-color: var(--brass);
-  background: rgba(200, 151, 74, 0.07);
+  background: rgba(176, 103, 47, 0.09);
 }
 .opt.is-disabled { opacity: 0.4; pointer-events: none; }
 
@@ -1248,7 +1268,7 @@ p:last-child { margin-bottom: 0; }
   transition: all 0.2s var(--ease);
 }
 .opt.is-selected .opt__check { background: var(--brass); border-color: var(--brass); }
-.opt__check svg { width: 12px; height: 12px; color: #17120a; opacity: 0; transition: opacity 0.15s; }
+.opt__check svg { width: 12px; height: 12px; color: #1a120c; opacity: 0; transition: opacity 0.15s; }
 .opt.is-selected .opt__check svg { opacity: 1; }
 
 .opt__body { flex: 1; min-width: 0; }
@@ -1283,8 +1303,8 @@ p:last-child { margin-bottom: 0; }
 .opt__avatar .avatar-fallback { font-size: 21px; }
 
 .opt--any {
-  background: linear-gradient(120deg, rgba(31, 61, 49, 0.5), var(--ink-2));
-  border-color: rgba(200, 151, 74, 0.28);
+  background: linear-gradient(120deg, rgba(78, 98, 107, 0.38), var(--ink-2));
+  border-color: rgba(176, 103, 47, 0.3);
 }
 .opt--any .opt__avatar {
   display: grid;
@@ -1300,7 +1320,7 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #17120a;
+  color: #1a120c;
   background: var(--brass);
   border-radius: 4px;
   padding: 2px 6px;
@@ -1334,7 +1354,7 @@ p:last-child { margin-bottom: 0; }
   -webkit-tap-highlight-color: transparent;
 }
 .date-chip:hover { border-color: var(--brass-dim); }
-.date-chip.is-selected { background: var(--brass); border-color: var(--brass); color: #17120a; }
+.date-chip.is-selected { background: var(--brass); border-color: var(--brass); color: #1a120c; }
 .date-chip.is-full { opacity: 0.32; pointer-events: none; }
 
 .date-chip__dow {
@@ -1399,7 +1419,7 @@ p:last-child { margin-bottom: 0; }
   font-variant-numeric: tabular-nums;
 }
 .slot:hover { border-color: var(--brass-dim); }
-.slot.is-selected { background: var(--brass); border-color: var(--brass); color: #17120a; }
+.slot.is-selected { background: var(--brass); border-color: var(--brass); color: #1a120c; }
 .slot small {
   display: block;
   font-family: var(--font-body);
@@ -1444,7 +1464,7 @@ p:last-child { margin-bottom: 0; }
   color: var(--muted);
   margin-bottom: 7px;
 }
-.field label .req { color: var(--rust); }
+.field label .req { color: var(--brick-lite); }
 
 .field input,
 .field textarea,
@@ -1465,12 +1485,12 @@ p:last-child { margin-bottom: 0; }
   border-color: var(--brass);
 }
 .field textarea { resize: vertical; min-height: 90px; }
-.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--rust); }
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--brick-lite); }
 
 .field__error {
   display: none;
   font-size: 12.5px;
-  color: var(--rust);
+  color: var(--brick-lite);
   margin-top: 6px;
 }
 .field__error.is-shown { display: block; }
@@ -1574,7 +1594,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(61, 124, 98, 0.16);
+  background: rgba(78, 98, 107, 0.2);
   border: 2px solid var(--pine-lite);
   animation: pop 0.45s var(--ease);
 }
@@ -1651,7 +1671,10 @@ p:last-child { margin-bottom: 0; }
 
   .barber-rail {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* Adapts to however many barbers are in data.js: cards cap at 320px and
+       the row centres, so two look right and five still would. */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+    justify-content: center;
     gap: 18px;
     overflow: visible;
     margin: 0;
@@ -1727,7 +1750,6 @@ p:last-child { margin-bottom: 0; }
   .hero__strip { gap: 44px; }
 
   .svc-list { grid-template-columns: repeat(3, 1fr); }
-  .barber-rail { grid-template-columns: repeat(4, 1fr); }
   .review-rail { grid-template-columns: repeat(4, 1fr); }
   .gallery { gap: 14px; }
 

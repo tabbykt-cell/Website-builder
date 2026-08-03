@@ -1,7 +1,8 @@
 # Bushwacker Barber Shop — Website
 
-A mobile-first website for Bushwacker Barber Shop, with an interactive
-appointment-booking tool.
+A mobile-first website for Bushwacker Barber Shop (also signed *The Refinery
+Room*) at 801 E Broad Ave #11, Broad Street Square, Rockingham NC, with an
+interactive appointment-booking tool.
 
 No build step, no framework, no dependencies. Plain HTML, CSS and JavaScript —
 open `index.html` in a browser and it runs.
@@ -135,22 +136,41 @@ keep this wizard as the front end only.
 
 ---
 
-## Before this goes live
+## What is confirmed, and what still is not
 
-Things that need real information — all are marked `PLACEHOLDER` in `data.js`:
+**Confirmed and in place**
 
-- [ ] **Phone number and email** — currently `(555) 555-0134`
-- [ ] **Street address** — currently a placeholder on Marshall Ave
-- [ ] **Barber names, bios and schedules** — currently Marcus, Tony, Renae, Cole
-- [ ] **Prices** — estimated from typical shop rates, every one needs confirming
-- [ ] **Service durations** — same
+- Shop name, and the second name *The Refinery Room* from the sign
+- Address — 801 E Broad Ave #11, Broad Street Square, Rockingham NC 28379
+- Phone — (910) 331-4629
+- The two barbers — Chris and Kelby
+- Service names, taken verbatim from the Google Business listing
+
+**Still needs real information** — every item is marked `PLACEHOLDER` in `data.js`:
+
+- [ ] **Hours.** Only one data point is known: the listing read *"Closes 5 PM"*
+      on a Monday afternoon, so weekdays are set to close at 5. Opening times
+      and the weekend are assumptions. Fix `SHOP.hours` **and** `SCHEDULES`
+      together — the first is what visitors read, the second is what the
+      booking engine uses.
+- [ ] **Barber schedules.** Which days and hours Chris and Kelby each work.
+- [ ] **Barber titles, blurbs and specialties.** Currently deliberately generic
+      wording rather than invented biography.
+- [ ] **Prices and durations.** Estimated from typical shop rates. Every one
+      needs confirming.
+- [ ] **Email address** — currently `hello@bushwackerbarber.com`
 - [ ] **Photos** — see `assets/images/README.md`
 - [ ] **Reviews** — swap the placeholders for real Google reviews
-- [ ] **Social links** — Instagram and Facebook currently point at the homepages
+- [ ] **Social links** — Instagram and Facebook point at the homepages
 
-Service *names* came from the shop's Google Business listing and are accurate.
-Duplicate entries on the listing (`Beard trim` / `Beard Trim`) were merged, and
-near-duplicates were grouped into four categories: Cuts, Shaves & Beard, Color
+**One open question.** The sign reads BUSHWACKER BARBER SHOP / THE REFINERY
+ROOM. This is built as one business with two names. If The Refinery Room is
+actually a salon side with its own stylists, the colour and waxing services
+should be assigned to them — remove those IDs from Chris and Kelby's `skills`
+in `data.js` and the booking tool stops offering those two for them.
+
+Duplicate entries on the Google listing (`Beard trim` / `Beard Trim`) were
+merged, and the rest grouped into four categories: Cuts, Shaves & Beard, Color
 and Waxing.
 
 ---
@@ -169,19 +189,25 @@ Mobile specifics:
 - 44px+ tap targets throughout; 16px form inputs so iOS does not zoom on focus
 - `env(safe-area-inset-*)` respected so nothing hides under the home indicator
 
-**Palette** — dark shop interior, pine, brass and bone:
+**Palette** — taken directly from the shop sign: weathered plank boards in barn
+red, cream and slate blue, rusted iron lettering, black pipe frame, brick wall.
 
 | | | |
 |---|---|---|
-| `#0d0f10` | Ink | Page background |
-| `#1f3d31` / `#3d7c62` | Pine | Sections, accents |
-| `#c8974a` / `#e2b76b` | Brass | Buttons, prices, highlights |
-| `#f3efe6` | Bone | Text |
-| `#a8443c` | Rust | Barber-pole stripe, warnings |
+| `#16110f` | Ink | Page background — a warm near-black biased brown, like the charred brick |
+| `#b0672f` / `#d68f4b` | Rust | The lettering. Buttons, prices, highlights |
+| `#8b3a32` | Brick | Red plank. Stripe, warnings, errors |
+| `#4e626b` / `#86a0aa` | Slate | Blue plank. Section bands, secondary buttons |
+| `#efe7d9` | Cream | White plank. Text |
 
-**Type** — Alfa Slab One (display), Oswald (headings and UI), Barlow (body),
-loaded from Google Fonts with system fallbacks. The preview build inlines them
-so it needs no network.
+The diagonal stripe down the left of the hero repeats the sign's plank
+sequence — red, cream, slate, cream. The logo is the sign itself: plank boards
+in a pipe frame with a rusted slab `B`.
+
+**Type** — Bevan (display), Oswald (headings and UI), Barlow (body), loaded
+from Google Fonts with system fallbacks. Bevan is a wood-type slab serif,
+chosen to echo the rusted metal letters on the sign. The preview build inlines
+all three so it needs no network.
 
 **Accessibility** — skip link, visible focus rings, ARIA on the tabs, stepper
 and live regions, `prefers-reduced-motion` honoured, and semantic headings

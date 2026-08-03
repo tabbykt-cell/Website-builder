@@ -8,13 +8,11 @@ placeholder instead of a broken image, so the site never looks unfinished.
 
 | File | Where it shows | Recommended size | Crop |
 |---|---|---|---|
-| `hero.jpg` | Full-bleed background behind the homepage headline | 1920 × 1280 | Landscape. Keep the subject in the upper-middle — the bottom 40% sits under a dark gradient and the headline. |
+| `hero.jpg` | Full-bleed background behind the homepage headline | 1920 × 1280 | Landscape. Keep the subject in the upper-middle — the bottom 40% sits under a dark gradient and the headline. The storefront sign shot works well here. |
 | `gallery-1.jpg` | Gallery, large feature tile | 1400 × 900 | Landscape 16:10 |
 | `gallery-2.jpg` … `gallery-6.jpg` | Gallery grid | 800 × 800 | **Square** |
-| `barber-marcus.jpg` | Team card + booking picker | 800 × 1000 | Portrait 4:5, face in the top third |
-| `barber-tony.jpg` | " | 800 × 1000 | " |
-| `barber-renae.jpg` | " | 800 × 1000 | " |
-| `barber-cole.jpg` | " | 800 × 1000 | " |
+| `barber-chris.jpg` | Team card + booking picker | 800 × 1000 | Portrait 4:5, face in the top third |
+| `barber-kelby.jpg` | " | 800 × 1000 | " |
 
 If the barber names change, rename the file **and** update the matching `photo:`
 path in `assets/js/data.js`.

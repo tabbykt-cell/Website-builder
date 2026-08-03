@@ -142,12 +142,15 @@ keep this wizard as the front end only.
 
 - Shop name, and the second name *The Refinery Room* from the sign
 - Address — 801 E Broad Ave #11, Broad Street Square, Rockingham NC 28379
-- Phone — (910) 331-4629
+- Phone — (910) 331-4629, shown as tappable text in the hero, the Visit
+  card and the footer, and on the desktop header button
+- Email — bushwacker1225@gmail.com
 - The two barbers — Chris and Kelby
 - Service names, taken verbatim from the Google Business listing
 - **Reviews** — eight real five-star Google reviews, quoted verbatim
 - **Photos** — the storefront sign as the hero, five shop photos in the
-  gallery, and Chris's portrait. See `assets/images/README.md`
+  gallery, and portraits of both Chris and Kelby. See
+  `assets/images/README.md`
 - **Facebook** — the page the shop supplied
 - **Four prices**, read off the chalkboards in the shop photo:
 
@@ -176,8 +179,6 @@ keep this wizard as the front end only.
 - [ ] **Barber schedules.** Which days and hours Chris and Kelby each work.
 - [ ] **Barber titles, blurbs and specialties.** Currently deliberately generic
       wording rather than invented biography.
-- [ ] **Kelby's photo** — `barber-kelby.jpg`. Chris's is in.
-- [ ] **Email address** — currently `hello@bushwackerbarber.com`
 - [ ] **Instagram** — still points at the Instagram homepage
 
 **One open question**

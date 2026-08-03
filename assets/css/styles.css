@@ -356,6 +356,10 @@ figure, blockquote { margin: 0; }
 .icon-btn:hover { background: rgba(239, 231, 217, 0.12); }
 .icon-btn svg { width: 20px; height: 20px; }
 
+/* The header call button is icon-only where space is tight; the digits
+   appear at desktop width, where there is room for them. */
+.header__phone { display: none; }
+
 .nav-desktop { display: none; }
 
 /* Mobile drawer */
@@ -567,6 +571,30 @@ figure, blockquote { margin: 0; }
 }
 
 .hero__cta { display: flex; flex-direction: column; gap: 11px; }
+
+/* Calling is the main thing a phone visitor wants, so the number is readable
+   in the hero rather than hidden behind an icon further down the page. */
+.hero__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  min-height: 44px;
+  font-family: var(--font-head);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: var(--cream-dim);
+  transition: color 0.2s var(--ease);
+}
+.hero__phone svg { width: 18px; height: 18px; color: var(--rust-lite); flex: none; }
+.hero__phone b {
+  color: var(--cream);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid rgba(214, 143, 75, 0.5);
+}
+.hero__phone:hover { color: var(--cream); }
+.hero__phone:hover b { border-bottom-color: var(--rust-lite); }
 
 .hero__strip {
   display: flex;
@@ -1768,6 +1796,17 @@ figure, blockquote { margin: 0; }
   }
   .nav-desktop a:hover { color: var(--bone); }
   .nav-desktop a:hover::after { width: 100%; }
+
+  .icon-btn--phone { width: auto; padding: 0 15px; gap: 9px; }
+  .header__phone {
+    display: inline;
+    font-family: var(--font-head);
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
 
   .header__menu { display: none; }
   .dock { display: none; }

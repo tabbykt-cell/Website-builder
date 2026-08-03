@@ -89,10 +89,18 @@ const App = (function () {
     const a = SHOP.address;
     const cityLine = a.city + ', ' + a.state + ' ' + a.zip;
 
-    [['#headerCall', tel], ['#drawerCall', tel], ['#dockCall', tel]].forEach(function (pair) {
+    [['#headerCall', tel], ['#drawerCall', tel], ['#dockCall', tel],
+     ['#heroPhone', tel]].forEach(function (pair) {
       const node = $(pair[0]);
-      if (node) node.href = pair[1];
+      if (!node) return;
+      node.href = pair[1];
+      /* These links are an icon on small screens, so name the number for
+         screen readers rather than leaving them as "link, phone". */
+      node.setAttribute('aria-label', 'Call the shop on ' + SHOP.phone);
     });
+
+    // Any element tagged .js-phone renders the number as readable text.
+    $$('.js-phone').forEach(function (node) { node.textContent = SHOP.phone; });
 
     const setLink = function (sel, href, text) {
       const node = $(sel);

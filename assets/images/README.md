@@ -18,17 +18,19 @@ Real shop photos, resized and compressed for mobile data — every one is under
 | `gallery-4.jpg` | Gallery | Half-up style with loose curls |
 | `gallery-5.jpg` | Gallery | Blonde updo, three angles |
 | `barber-chris.jpg` | Chris's team card + booking picker | Chris at the chair, cropped to 4:5 |
+| `barber-kelby.jpg` | Kelby's team card + booking picker | Kelby, cropped to 4:5 from a shop photo |
 | `favicon.png` | Browser tab icon | The logo on the page's ink colour |
 
 ## Still needed
 
 | File | Where it shows | Recommended size | Crop |
 |---|---|---|---|
-| `barber-kelby.jpg` | Kelby's team card + booking picker | 800 × 1000 | Portrait 4:5, face in the top third |
 | `og-image.jpg` | Link preview when the site is shared on text / Facebook / iMessage | 1200 × 630 | Landscape |
 
-Until Kelby's photo is added, that card shows a large **K** on a textured
-panel — deliberate, not an error.
+Both barber photos were cropped from wider shop photos, so they are lower
+resolution than a purpose-shot portrait. They read fine at card size; if
+better headshots of Chris and Kelby turn up, overwrite the two files and
+nothing else needs changing.
 
 ## Adding or changing photos
 

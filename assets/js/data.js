@@ -29,7 +29,7 @@ const SHOP = {
 
   phone: '(910) 331-4629',
   phoneHref: '+19103314629',
-  email: 'hello@bushwackerbarber.com',  // PLACEHOLDER
+  email: 'bushwacker1225@gmail.com',
 
   address: {
     line1: '801 E Broad Ave #11',
@@ -221,7 +221,7 @@ const BARBERS = [
     id: 'kelby',
     name: 'Kelby',
     title: 'Barber',                                        // PLACEHOLDER
-    photo: 'assets/images/barber-kelby.jpg',
+    photo: 'assets/images/barber-kelby.jpg',   // supplied by the shop
     bio: 'Cuts, fades and beard work. Walk-ins welcome.',    // PLACEHOLDER
     specialties: ['Fades', 'Kids cuts', 'Beard trims'],      // PLACEHOLDER
     skills: ALL_SERVICE_IDS

@@ -87,8 +87,8 @@
     </nav>
 
     <div class="header__actions">
-      <a class="icon-btn" id="headerCall" href="#" aria-label="Call the shop">
-        <svg><use href="#i-phone"/></svg>
+      <a class="icon-btn icon-btn--phone" id="headerCall" href="#">
+        <svg><use href="#i-phone"/></svg><span class="header__phone js-phone"></span>
       </a>
       <a class="btn btn--sm" href="book.html">Book</a>
       <button class="icon-btn header__menu" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
@@ -158,6 +158,11 @@
           </a>
           <a class="btn btn--ghost" href="#services">See Services &amp; Prices</a>
         </div>
+
+        <a class="hero__phone" id="heroPhone" href="#">
+          <svg><use href="#i-phone"/></svg>
+          <span>Call <b class="js-phone"></b></span>
+        </a>
 
         <div class="hero__strip">
           <div class="hero__stat"><b>2</b><span>Barbers</span></div>

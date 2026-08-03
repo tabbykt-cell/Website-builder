@@ -620,8 +620,9 @@
   /* --------------------------------------------------------------------------
      Deep links — book.html?service=mens-cut&barber=marcus
      ----------------------------------------------------------------------- */
-  function applyQuery() {
-    const params = new URLSearchParams(window.location.search);
+  function applyQuery(search) {
+    const params = new URLSearchParams(
+      search == null ? window.location.search : search);
 
     const svcId = params.get('service');
     if (svcId && SERVICES_BY_ID[svcId]) state.serviceId = svcId;
@@ -643,15 +644,36 @@
 
   /* --------------------------------------------------------------------------
      Boot
-     ----------------------------------------------------------------------- */
-  document.addEventListener('DOMContentLoaded', function () {
+     -----------------------------------------------------------------------
+     bind() wires the DOM once. start() resets the wizard and can be called
+     again later — used by the single-file preview build, where the booking
+     tool is a view inside the homepage rather than its own document.
+  ------------------------------------------------------------------------ */
+  function start(search) {
+    state.step = 1;
+    state.serviceId = null;
+    state.barberId = null;
+    state.dateKey = null;
+    state.slot = null;
+    state.booking = null;
+
+    const form = $('#detailsForm');
+    if (form) form.reset();
+    ['errName', 'errPhone', 'errEmail'].forEach(function (id) {
+      const node = $('#' + id);
+      if (node) node.classList.remove('is-shown');
+    });
+
+    renderServices();
+    goTo(applyQuery(search));
+  }
+
+  function bind() {
     const tel = 'tel:' + SHOP.phoneHref;
     ['#demoCallLink', '#walkinCall'].forEach(function (sel) {
       const node = $(sel);
       if (node) node.href = tel;
     });
-
-    renderServices();
 
     $('#serviceOptions').addEventListener('click', onServiceClick);
     $('#barberOptions').addEventListener('click', onBarberClick);
@@ -677,7 +699,14 @@
       e.preventDefault();
       next();
     });
+  }
 
-    goTo(applyQuery());
+  window.Booking = { bind: bind, start: start };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // The preview build drives this itself; a normal page boots immediately.
+    if (window.BOOKING_MANUAL_BOOT) return;
+    bind();
+    start();
   });
 })();

@@ -1,0 +1,8 @@
+node_modules/
+
+# Downloaded font files, cached so preview builds work offline.
+tools/.font-cache/
+
+# Build output. dist/preview.html is committed on purpose — it is the
+# single file you send to someone — but the embed variant is regenerated.
+dist/preview-embed.html

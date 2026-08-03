@@ -8,16 +8,32 @@ open `index.html` in a browser and it runs.
 
 ---
 
-## Run it locally
+## Look at it
+
+**Locally**
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000>.
+Then open <http://localhost:8000>. You can also just double-click `index.html`;
+a local server only makes the URLs match production.
 
-You can also just double-click `index.html`. A local server is only needed if
-you want the URLs to look the way they will in production.
+**On a phone, or to send to someone**
+
+```bash
+node tools/build-preview.js
+```
+
+Writes `dist/preview.html` — the whole site as one file, with the CSS,
+JavaScript, logo and typefaces inlined and the booking tool folded in as a
+second view. Nothing loads from the network, so it works offline, over email,
+or from any host. `dist/preview-embed.html` is the same thing minus the
+document skeleton, for hosts that supply their own.
+
+The preview is for sharing. The real site is `index.html` + `book.html`.
+
+**On the web** — see Deploying at the bottom.
 
 ---
 
@@ -36,6 +52,7 @@ assets/
     booking.js          The 4-step booking wizard
   img/logo.svg          Shield logo — pine tree and crossed razors
   images/               ← DROP PHOTOS HERE (see images/README.md)
+tools/build-preview.js  Bundles everything into one shareable file
 ```
 
 **Almost every change you will want to make is in `assets/js/data.js`.** Prices,
@@ -59,10 +76,11 @@ Two paths, exactly as requested:
   service are filtered out and named underneath so the list reads as complete.
 
 - **"Any Barber".** The system finds every open start time across the whole
-  qualified team and assigns one. When two barbers are free at the same time,
-  the one with the lighter day gets it — that spreads work across chairs
-  instead of stacking it on whoever is listed first. Each time slot shows the
-  barber it would assign, and confirming names them.
+  qualified team and assigns one. It walks the day in order and hands each slot
+  to whichever free barber has been assigned the fewest so far, ties going to
+  whoever has the emptier day — so the offer spreads across chairs instead of
+  stacking on whoever is listed first. Each time slot shows the barber it would
+  assign, and confirming names them.
 
 ### What the engine accounts for
 
@@ -162,7 +180,8 @@ Mobile specifics:
 | `#a8443c` | Rust | Barber-pole stripe, warnings |
 
 **Type** — Alfa Slab One (display), Oswald (headings and UI), Barlow (body),
-loaded from Google Fonts with system fallbacks.
+loaded from Google Fonts with system fallbacks. The preview build inlines them
+so it needs no network.
 
 **Accessibility** — skip link, visible focus rings, ARIA on the tabs, stepper
 and live regions, `prefers-reduced-motion` honoured, and semantic headings

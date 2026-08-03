@@ -70,6 +70,36 @@ const SHOP = {
 };
 
 /* -----------------------------------------------------------------------------
+   1b. ANALYTICS  -  how many people visit the site.
+
+   GitHub Pages does not count visitors, and GitHub's Insights > Traffic tab
+   counts views of the repository, not the website. So visitor numbers need a
+   small script on the page. Nothing loads until `provider` is set below.
+
+   Pick one, create a site in it, paste the ID here, and that is the whole job:
+
+     'cloudflare'  Cloudflare Web Analytics - free, no cookies, no consent
+                   banner needed. Sign in at dash.cloudflare.com, add
+                   "Web Analytics", enter the site URL, copy the token.
+                   siteId = the token (a long hex string).
+
+     'goatcounter' GoatCounter - free for a small site, open source, no
+                   cookies. Sign up at goatcounter.com, pick a subdomain.
+                   siteId = that subdomain, e.g. 'bushwacker'.
+
+     'plausible'   Plausible - paid, roughly $9/month, no cookies.
+                   siteId = the domain you entered, e.g.
+                   'tabbykt-cell.github.io'.
+
+   All three show visits per day, which pages, and where people came from.
+   None of them set cookies, so no cookie banner is required.
+   -------------------------------------------------------------------------- */
+const ANALYTICS = {
+  provider: null,   // 'cloudflare' | 'goatcounter' | 'plausible' | null = off
+  siteId: ''
+};
+
+/* -----------------------------------------------------------------------------
    2. SERVICES
    Names come straight from the Google listing. Duplicates on the listing
    ("Beard trim" / "Beard Trim") have been merged.

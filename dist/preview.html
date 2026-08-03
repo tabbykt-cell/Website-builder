@@ -2456,6 +2456,36 @@ const SHOP = {
 };
 
 /* -----------------------------------------------------------------------------
+   1b. ANALYTICS  -  how many people visit the site.
+
+   GitHub Pages does not count visitors, and GitHub's Insights > Traffic tab
+   counts views of the repository, not the website. So visitor numbers need a
+   small script on the page. Nothing loads until `provider` is set below.
+
+   Pick one, create a site in it, paste the ID here, and that is the whole job:
+
+     'cloudflare'  Cloudflare Web Analytics - free, no cookies, no consent
+                   banner needed. Sign in at dash.cloudflare.com, add
+                   "Web Analytics", enter the site URL, copy the token.
+                   siteId = the token (a long hex string).
+
+     'goatcounter' GoatCounter - free for a small site, open source, no
+                   cookies. Sign up at goatcounter.com, pick a subdomain.
+                   siteId = that subdomain, e.g. 'bushwacker'.
+
+     'plausible'   Plausible - paid, roughly $9/month, no cookies.
+                   siteId = the domain you entered, e.g.
+                   'tabbykt-cell.github.io'.
+
+   All three show visits per day, which pages, and where people came from.
+   None of them set cookies, so no cookie banner is required.
+   -------------------------------------------------------------------------- */
+const ANALYTICS = {
+  provider: null,   // 'cloudflare' | 'goatcounter' | 'plausible' | null = off
+  siteId: ''
+};
+
+/* -----------------------------------------------------------------------------
    2. SERVICES
    Names come straight from the Google listing. Duplicates on the listing
    ("Beard trim" / "Beard Trim") have been merged.
@@ -3198,6 +3228,39 @@ const App = (function () {
     if (year) year.textContent = new Date().getFullYear();
   }
 
+  /* --- analytics ---------------------------------------------------------
+     Inert unless ANALYTICS.provider is set in data.js. Loads one small script
+     and nothing else \u2014 no cookies, no tracking beyond a page count.
+  ---------------------------------------------------------------------- */
+  function initAnalytics() {
+    if (typeof ANALYTICS === 'undefined') return;
+    if (!ANALYTICS.provider || !ANALYTICS.siteId) return;
+
+    const script = document.createElement('script');
+    script.defer = true;
+
+    switch (ANALYTICS.provider) {
+      case 'cloudflare':
+        script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        script.setAttribute('data-cf-beacon',
+          JSON.stringify({ token: ANALYTICS.siteId }));
+        break;
+      case 'goatcounter':
+        script.src = '//gc.zgo.at/count.js';
+        script.setAttribute('data-goatcounter',
+          'https://' + ANALYTICS.siteId + '.goatcounter.com/count');
+        break;
+      case 'plausible':
+        script.src = 'https://plausible.io/js/script.js';
+        script.setAttribute('data-domain', ANALYTICS.siteId);
+        break;
+      default:
+        return;   // unknown provider: load nothing rather than guess
+    }
+
+    document.head.appendChild(script);
+  }
+
   /* --- header / drawer / dock ------------------------------------------- */
   function initChrome() {
     const header = $('#header');
@@ -3292,6 +3355,7 @@ const App = (function () {
 
   function init() {
     fillShopDetails();
+    initAnalytics();
     initChrome();
     initReveals();
     watchImages(document);

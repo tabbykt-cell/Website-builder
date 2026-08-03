@@ -246,6 +246,39 @@ throughout.
 
 ---
 
+## Counting visitors
+
+GitHub Pages does not count visitors. GitHub's **Insights → Traffic** tab looks
+like it does, but it counts views of the *repository* — people looking at the
+code — not visits to the live site.
+
+So the site needs a small analytics script. `ANALYTICS` at the top of
+`assets/js/data.js` supports three, and loads nothing at all until you set it:
+
+| Provider | Cost | Notes |
+|---|---|---|
+| **Cloudflare Web Analytics** | Free | Recommended. No cookies, no consent banner. `dash.cloudflare.com` → Web Analytics → add the site → copy the token |
+| **GoatCounter** | Free for a small site | Open source, very light. Sign up, pick a subdomain, use that as the ID |
+| **Plausible** | ~$9/month | No cookies. ID is the domain you registered |
+
+Set two values and redeploy:
+
+```js
+const ANALYTICS = {
+  provider: 'cloudflare',
+  siteId: 'your-token-here'
+};
+```
+
+All three report visits per day, which pages get looked at, and where people
+arrived from. None set cookies, so no cookie banner is needed.
+
+**Worth knowing:** for a barber shop, the Google Business Profile dashboard is
+often more useful than pageviews — it already reports how many people called,
+asked for directions or searched for the shop, with no setup at all.
+
+---
+
 ## Deploying
 
 Any static host works — there is nothing to build.

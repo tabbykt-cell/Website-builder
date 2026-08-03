@@ -144,6 +144,39 @@ const App = (function () {
     if (year) year.textContent = new Date().getFullYear();
   }
 
+  /* --- analytics ---------------------------------------------------------
+     Inert unless ANALYTICS.provider is set in data.js. Loads one small script
+     and nothing else — no cookies, no tracking beyond a page count.
+  ---------------------------------------------------------------------- */
+  function initAnalytics() {
+    if (typeof ANALYTICS === 'undefined') return;
+    if (!ANALYTICS.provider || !ANALYTICS.siteId) return;
+
+    const script = document.createElement('script');
+    script.defer = true;
+
+    switch (ANALYTICS.provider) {
+      case 'cloudflare':
+        script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        script.setAttribute('data-cf-beacon',
+          JSON.stringify({ token: ANALYTICS.siteId }));
+        break;
+      case 'goatcounter':
+        script.src = '//gc.zgo.at/count.js';
+        script.setAttribute('data-goatcounter',
+          'https://' + ANALYTICS.siteId + '.goatcounter.com/count');
+        break;
+      case 'plausible':
+        script.src = 'https://plausible.io/js/script.js';
+        script.setAttribute('data-domain', ANALYTICS.siteId);
+        break;
+      default:
+        return;   // unknown provider: load nothing rather than guess
+    }
+
+    document.head.appendChild(script);
+  }
+
   /* --- header / drawer / dock ------------------------------------------- */
   function initChrome() {
     const header = $('#header');
@@ -238,6 +271,7 @@ const App = (function () {
 
   function init() {
     fillShopDetails();
+    initAnalytics();
     initChrome();
     initReveals();
     watchImages(document);

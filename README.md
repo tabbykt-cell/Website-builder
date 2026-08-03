@@ -51,7 +51,7 @@ assets/
     app.js              Header, drawer, dock, image fallbacks, toast
     home.js             Renders the homepage from data.js
     booking.js          The 4-step booking wizard
-  img/logo.svg          Shield logo — pine tree and crossed razors
+  img/logo.svg          Logo — the shop sign's plank boards and rusted B
   images/               ← DROP PHOTOS HERE (see images/README.md)
 tools/build-preview.js  Bundles everything into one shareable file
 ```
@@ -97,9 +97,9 @@ Two paths, exactly as requested:
 
 Every "Book" button on the homepage carries the selection into the wizard:
 
-- `book.html?service=cut-shave` — starts on the barber step
-- `book.html?barber=marcus` — starts on the time step
-- `book.html?service=razor-shave&barber=tony` — starts on the time step
+- `book.html?service=cut-beard` — starts on the barber step
+- `book.html?barber=chris` — starts on the time step
+- `book.html?service=cut-shave&barber=kelby` — starts on the time step
 
 ---
 
@@ -180,18 +180,17 @@ keep this wizard as the front end only.
 - [ ] **Email address** — currently `hello@bushwackerbarber.com`
 - [ ] **Instagram** — still points at the Instagram homepage
 
-**Two open questions**
+**One open question**
 
-1. **Who is Steve?** Two five-star Google reviews thank a barber named Steve,
-   who is not Chris or Kelby. Those two reviews are left out of `REVIEWS` for
-   now — the other eight are in. Add them back once it is clear whether Steve
-   still cuts there.
-2. **Is The Refinery Room separate?** The sign reads BUSHWACKER BARBER SHOP /
-   THE REFINERY ROOM. This is built as one business with two names. If The
-   Refinery Room is a salon side with its own stylists, the colour and waxing
-   services should be assigned to them — remove those IDs from Chris and
-   Kelby's `skills` in `data.js` and the booking tool stops offering those two
-   for them.
+**Is The Refinery Room separate?** The sign reads BUSHWACKER BARBER SHOP / THE
+REFINERY ROOM. This is built as one business with two names. If The Refinery
+Room is a salon side with its own stylists, the colour and waxing services
+should be assigned to them — remove those IDs from Chris and Kelby's `skills`
+in `data.js` and the booking tool stops offering those two for them.
+
+**Settled:** two of the Google reviews thank a barber by name who has since
+left the shop. They stay out of `REVIEWS` — quoting them would send customers
+in asking for someone who is not there. The other eight are in.
 
 Duplicate entries on the Google listing (`Beard trim` / `Beard Trim`) were
 merged, and the rest grouped into four categories: Cuts, Shaves & Beard, Color

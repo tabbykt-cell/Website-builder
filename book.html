@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0f10">
+
+<title>Book an Appointment — Bushwacker Barber Shop</title>
+<meta name="description" content="Book your chair at Bushwacker Barber Shop. Pick your service, choose your barber or let us match you with the first one available, then pick a time.">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@400;500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ========================= ICON SPRITE ========================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M3 6h18M3 12h18M3 18h18"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M6 6l12 12M18 6L6 18"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>
+  </symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 11 19-9-9 19-2-8-8-2z"/>
+  </symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m4 12 6 6L20 6"/>
+  </symbol>
+  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/>
+  </symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/>
+  </symbol>
+</svg>
+
+<!-- ========================= HEADER ========================= -->
+<header class="header is-stuck" id="header">
+  <div class="header__inner">
+    <a class="brand" href="index.html" aria-label="Bushwacker Barber Shop — home">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span class="brand__text">
+        <span class="brand__name">Bushwacker</span>
+        <span class="brand__sub">Barber Shop</span>
+      </span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#barbers">Barbers</a>
+      <a href="index.html#visit">Visit</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="icon-btn" id="headerCall" href="#" aria-label="Call the shop">
+        <svg><use href="#i-phone"/></svg>
+      </a>
+      <a class="btn btn--sm btn--ghost" href="index.html">Home</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="booking-page">
+  <div class="booking-shell">
+
+    <div class="booking-head">
+      <h1>Book Your Chair</h1>
+      <p>Four quick steps. No account needed.</p>
+    </div>
+
+    <div class="demo-note">
+      <svg><use href="#i-alert"/></svg>
+      <div>
+        <b>Demonstration only.</b> This booking tool shows the full flow and real
+        scheduling logic, but appointments are not yet sent to the shop.
+        To book for real, <a href="#" id="demoCallLink" style="color:var(--brass-lite);text-decoration:underline">call us</a>.
+      </div>
+    </div>
+
+    <!-- Stepper -->
+    <div class="stepper" id="stepper" aria-hidden="true">
+      <div class="stepper__step" data-step="1">
+        <div class="stepper__bar"></div><div class="stepper__label">Service</div>
+      </div>
+      <div class="stepper__step" data-step="2">
+        <div class="stepper__bar"></div><div class="stepper__label">Barber</div>
+      </div>
+      <div class="stepper__step" data-step="3">
+        <div class="stepper__bar"></div><div class="stepper__label">Time</div>
+      </div>
+      <div class="stepper__step" data-step="4">
+        <div class="stepper__bar"></div><div class="stepper__label">Details</div>
+      </div>
+    </div>
+
+    <p class="sr-only" id="stepAnnounce" role="status" aria-live="polite"></p>
+
+    <!-- ---------- STEP 1 : SERVICE ---------- -->
+    <section class="step" data-step="1" aria-label="Choose a service">
+      <h2 class="step__title">What are you coming in for?</h2>
+      <p class="step__sub">Pick one service. Need two things done? Mention it in the notes at the end.</p>
+      <div id="serviceOptions"></div>
+    </section>
+
+    <!-- ---------- STEP 2 : BARBER ---------- -->
+    <section class="step" data-step="2" aria-label="Choose a barber">
+      <h2 class="step__title">Who is cutting?</h2>
+      <p class="step__sub">Choose your barber, or let us assign whoever opens up first.</p>
+      <div id="barberOptions"></div>
+    </section>
+
+    <!-- ---------- STEP 3 : DATE & TIME ---------- -->
+    <section class="step" data-step="3" aria-label="Choose a date and time">
+      <h2 class="step__title">When works for you?</h2>
+      <p class="step__sub" id="timeSub">Pick a day, then an open time.</p>
+
+      <div class="opt-group__label">Choose a day</div>
+      <div class="date-rail" id="dateRail"></div>
+
+      <div class="opt-group__label">Open times</div>
+      <div id="slotArea"></div>
+    </section>
+
+    <!-- ---------- STEP 4 : DETAILS ---------- -->
+    <section class="step" data-step="4" aria-label="Your details">
+      <h2 class="step__title">Last thing — who is it for?</h2>
+      <p class="step__sub">We use this to hold the chair and send a reminder.</p>
+
+      <div class="summary" id="summaryCard"></div>
+
+      <form id="detailsForm" novalidate>
+        <div class="field">
+          <label for="fName">Full name <span class="req">*</span></label>
+          <input type="text" id="fName" name="name" autocomplete="name" placeholder="Jordan Ellis" required>
+          <p class="field__error" id="errName">Please enter your name.</p>
+        </div>
+
+        <div class="field">
+          <label for="fPhone">Mobile number <span class="req">*</span></label>
+          <input type="tel" id="fPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(555) 123-4567" required>
+          <p class="field__error" id="errPhone">Please enter a valid phone number.</p>
+        </div>
+
+        <div class="field">
+          <label for="fEmail">Email <span style="color:var(--muted-2)">(optional)</span></label>
+          <input type="email" id="fEmail" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com">
+          <p class="field__error" id="errEmail">That email address does not look right.</p>
+        </div>
+
+        <div class="field">
+          <label for="fNotes">Anything we should know? <span style="color:var(--muted-2)">(optional)</span></label>
+          <textarea id="fNotes" name="notes" placeholder="First time here, going shorter on the sides, bringing my son for a cut too…"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="checkbox">
+            <input type="checkbox" id="fRemind" checked>
+            <span>Text me a reminder the day before my appointment.</span>
+          </label>
+        </div>
+      </form>
+    </section>
+
+    <!-- ---------- CONFIRMATION ---------- -->
+    <section class="step" data-step="5" aria-label="Booking confirmed">
+      <div class="confirm">
+        <div class="confirm__icon"><svg><use href="#i-check"/></svg></div>
+        <h2 class="confirm__title">You're in the book</h2>
+        <p class="confirm__text" id="confirmText"></p>
+        <div class="confirm__code" id="confirmCode"></div>
+
+        <div class="summary" id="confirmSummary"></div>
+
+        <div class="confirm__actions">
+          <button class="btn" id="addToCalendar">
+            <svg><use href="#i-calendar"/></svg> Add to Calendar
+          </button>
+          <a class="btn btn--ghost" href="index.html">Back to Home</a>
+        </div>
+
+        <p style="margin-top:26px;font-size:13px;color:var(--muted-2);line-height:1.6">
+          This is a demonstration booking and has not been sent to the shop.
+          Nothing is reserved.
+        </p>
+      </div>
+    </section>
+
+    <!-- ---------- WALK-INS ---------- -->
+    <section id="walkins" style="margin-top:42px;padding-top:26px;border-top:1px solid var(--line-2)">
+      <h2 style="font-family:var(--font-head);font-size:16px;margin-bottom:8px">Prefer to walk in?</h2>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px">
+        We always keep chairs open for walk-ins. Mornings and mid-week are your
+        best bet — Saturdays fill up fast.
+      </p>
+      <a class="btn btn--ghost btn--sm" id="walkinCall" href="#">
+        <svg><use href="#i-phone"/></svg> Call to Check the Wait
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<!-- ========================= STICKY ACTION BAR ========================= -->
+<div class="book-bar" id="bookBar">
+  <div class="book-bar__inner">
+    <button class="btn btn--ghost btn--back" id="backBtn" aria-label="Go back">
+      <svg><use href="#i-back"/></svg>
+    </button>
+    <div class="book-bar__info">
+      <b id="barTitle">Choose a service</b>
+      <span id="barSub">Step 1 of 4</span>
+    </div>
+    <button class="btn" id="nextBtn" disabled>Continue</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/availability.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/booking.js"></script>
+</body>
+</html>

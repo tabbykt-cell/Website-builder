@@ -69,7 +69,23 @@ const SHOP = {
    2. SERVICES
    Names come straight from the Google listing. Duplicates on the listing
    ("Beard trim" / "Beard Trim") have been merged.
-   `price` and `mins` are PLACEHOLDER estimates — confirm with the shop.
+
+   PRICES. Four are legible on the chalkboards in the shop photo and are
+   marked `fromBoard: true` below:
+
+       Hair Cut ................................ $15
+       Beard Trim .............................. $10
+       Hair Cut + Beard Trim ................... $20
+       Hair Cut + Hot Towel Straight Razor Shave $30
+
+   (The $15 and $10 lines are partly hidden behind the barber's arm in the
+   photo; the amounts are clear, the labels are inferred - worth double
+   checking. The $20 combo and the $30 cut-and-shave are fully legible.)
+
+   Every other price is a PLACEHOLDER estimate, scaled to sit sensibly around
+   that $15 haircut. All of them still need confirming.
+
+   `mins` are PLACEHOLDER throughout.
    -------------------------------------------------------------------------- */
 const SERVICE_CATEGORIES = [
   {
@@ -78,22 +94,27 @@ const SERVICE_CATEGORIES = [
     icon: 'scissors',
     blurb: 'Fades, tapers, hard parts and everything in between.',
     services: [
-      { id: 'mens-cut',     name: "Men's Haircut",       mins: 30, price: 30,
-        desc: 'Fades, hard parts, high & tight, crew cuts, taper, edging.' },
-      { id: 'cut-shave',    name: 'Cut & Shave',         mins: 60, price: 55,
-        desc: 'Full haircut paired with a straight razor hot towel shave.',
-        featured: true },
-      { id: 'buzz-cut',     name: 'Buzz Cut',            mins: 20, price: 20,
+      { id: 'mens-cut',     name: 'Hair Cut',            mins: 30, price: 15,
+        desc: 'Fades, hard parts, high & tight, crew cuts, taper, edging.',
+        fromBoard: true },
+      { id: 'cut-beard',    name: 'Hair Cut + Beard Trim', mins: 45, price: 20,
+        desc: 'The shop favourite - cut and beard shaped in one sitting.',
+        featured: true, fromBoard: true },
+      { id: 'cut-shave',    name: 'Hair Cut + Hot Towel Straight Razor Shave',
+        mins: 60, price: 30,
+        desc: 'Cut, then hot towel, warm lather and a straight razor finish.',
+        featured: true, fromBoard: true },
+      { id: 'buzz-cut',     name: 'Buzz Cut',            mins: 20, price: 12,
         desc: 'One guard, clean edge-up, in and out.' },
-      { id: 'stylish-cut',  name: 'Stylish Cut',         mins: 45, price: 40,
+      { id: 'stylish-cut',  name: 'Stylish Cut',         mins: 45, price: 20,
         desc: 'Scissor-over-comb detail work and a finished style.' },
-      { id: 'dry-cut',      name: 'Dry Cut',             mins: 25, price: 25,
+      { id: 'dry-cut',      name: 'Dry Cut',             mins: 25, price: 15,
         desc: 'No wash — straight to the chair.' },
-      { id: 'womens-cut',   name: "Women's Cut",         mins: 45, price: 45,
+      { id: 'womens-cut',   name: "Women's Cut",         mins: 45, price: 25,
         desc: 'Cut, wash and style.' },
-      { id: 'womens-dry',   name: "Women's Dry Cut",     mins: 30, price: 32,
+      { id: 'womens-dry',   name: "Women's Dry Cut",     mins: 30, price: 20,
         desc: 'Dry cut and finish, no wash.' },
-      { id: 'kids-cut',     name: "Kid's Cut (12 & under)", mins: 25, price: 22,
+      { id: 'kids-cut',     name: "Kid's Cut (12 & under)", mins: 25, price: 12,
         desc: 'Patient hands, quick work.' }
     ]
   },
@@ -103,16 +124,16 @@ const SERVICE_CATEGORIES = [
     icon: 'razor',
     blurb: 'Straight razor, hot towel, proper finish.',
     services: [
-      { id: 'razor-shave',  name: 'Straight Razor Hot Towel Shave', mins: 40, price: 40,
-        desc: 'Hot towel, warm lather, straight razor, cold finish.',
-        featured: true },
-      { id: 'head-shave',   name: 'Head Shave',          mins: 35, price: 35,
+      { id: 'razor-shave',  name: 'Straight Razor Hot Towel Shave', mins: 40, price: 20,
+        desc: 'Hot towel, warm lather, straight razor, cold finish.' },
+      { id: 'head-shave',   name: 'Head Shave',          mins: 35, price: 18,
         desc: 'Full head, razor smooth.' },
-      { id: 'beard-trim',   name: 'Beard Trim',          mins: 20, price: 18,
-        desc: 'Shaped, lined and balanced to your jaw.' },
-      { id: 'beard-cond',   name: 'Beard Conditioning',  mins: 25, price: 25,
+      { id: 'beard-trim',   name: 'Beard Trim',          mins: 20, price: 10,
+        desc: 'Shaped, lined and balanced to your jaw.',
+        fromBoard: true },
+      { id: 'beard-cond',   name: 'Beard Conditioning',  mins: 25, price: 15,
         desc: 'Deep condition, hot towel and beard oil finish.' },
-      { id: 'beard-oil',    name: 'Beard Oil Treatment', mins: 15, price: 15,
+      { id: 'beard-oil',    name: 'Beard Oil Treatment', mins: 15, price: 10,
         desc: 'Softens the wire, kills the itch.' }
     ]
   },
@@ -122,15 +143,15 @@ const SERVICE_CATEGORIES = [
     icon: 'drop',
     blurb: 'Grey blending, full color and touch-ups.',
     services: [
-      { id: 'color-treat',  name: 'Color Treatment',     mins: 75, price: 75,
+      { id: 'color-treat',  name: 'Color Treatment',     mins: 75, price: 55,
         desc: 'Full color service, consultation included.' },
-      { id: 'hair-dying',   name: 'Hair Dying',          mins: 90, price: 90,
+      { id: 'hair-dying',   name: 'Hair Dying',          mins: 90, price: 65,
         desc: 'Full application with wash and style.' },
-      { id: 'root-touch',   name: 'Root Touch-Up',       mins: 45, price: 50,
+      { id: 'root-touch',   name: 'Root Touch-Up',       mins: 45, price: 40,
         desc: 'Regrowth only, blended clean.' },
-      { id: 'brow-tint',    name: 'Eyebrow Tinting',     mins: 20, price: 20,
+      { id: 'brow-tint',    name: 'Eyebrow Tinting',     mins: 20, price: 15,
         desc: 'Shade-matched and softened.' },
-      { id: 'blow-dry',     name: 'Blow-Dry Style',      mins: 30, price: 30,
+      { id: 'blow-dry',     name: 'Blow-Dry Style',      mins: 30, price: 20,
         desc: 'Wash and blow-out finish.' }
     ]
   },
@@ -140,11 +161,11 @@ const SERVICE_CATEGORIES = [
     icon: 'leaf',
     blurb: 'Quick, clean detail work.',
     services: [
-      { id: 'brow-wax',     name: 'Eyebrow Wax',         mins: 15, price: 15,
+      { id: 'brow-wax',     name: 'Eyebrow Wax',         mins: 15, price: 10,
         desc: 'Shaped and cleaned up.' },
-      { id: 'facial-wax',   name: 'Facial Wax',          mins: 20, price: 22,
+      { id: 'facial-wax',   name: 'Facial Wax',          mins: 20, price: 15,
         desc: 'Nose, ears, cheeks — your call.' },
-      { id: 'womens-wax',   name: "Women's Facial Wax",  mins: 25, price: 28,
+      { id: 'womens-wax',   name: "Women's Facial Wax",  mins: 25, price: 20,
         desc: 'Brow, lip and chin detail.' }
     ]
   }
@@ -175,7 +196,7 @@ SERVICE_CATEGORIES.forEach(function (cat) {
    IDs here and the booking tool stops offering that barber for them.
    -------------------------------------------------------------------------- */
 const ALL_SERVICE_IDS = [
-  'mens-cut', 'cut-shave', 'buzz-cut', 'stylish-cut', 'dry-cut',
+  'mens-cut', 'cut-beard', 'cut-shave', 'buzz-cut', 'stylish-cut', 'dry-cut',
   'womens-cut', 'womens-dry', 'kids-cut',
   'razor-shave', 'head-shave', 'beard-trim', 'beard-cond', 'beard-oil',
   'color-treat', 'hair-dying', 'root-touch', 'brow-tint', 'blow-dry',
@@ -238,24 +259,49 @@ const CLOSED_DATES = [
 ];
 
 /* -----------------------------------------------------------------------------
-   5. GALLERY  —  drop real photos at these paths (see assets/images/README.md).
-   Missing files render a branded placeholder tile instead of a broken image.
+   5. GALLERY  -  real photos from the shop, in assets/images/.
    -------------------------------------------------------------------------- */
 const GALLERY = [
-  { src: 'assets/images/gallery-1.jpg', alt: 'Skin fade, finished' },
-  { src: 'assets/images/gallery-2.jpg', alt: 'Hot towel straight razor shave' },
-  { src: 'assets/images/gallery-3.jpg', alt: 'The shop floor' },
-  { src: 'assets/images/gallery-4.jpg', alt: 'Beard shape-up' },
-  { src: 'assets/images/gallery-5.jpg', alt: 'Hard part and taper' },
-  { src: 'assets/images/gallery-6.jpg', alt: 'Barber chairs and mirrors' }
+  { src: 'assets/images/gallery-1.jpg', alt: "Men's cuts - beard trim, side part fade and a kid's cut" },
+  { src: 'assets/images/gallery-2.jpg', alt: 'A young client in the barber chair' },
+  { src: 'assets/images/gallery-3.jpg', alt: 'Curled low updo' },
+  { src: 'assets/images/gallery-4.jpg', alt: 'Half-up style with loose curls' },
+  { src: 'assets/images/gallery-5.jpg', alt: 'Blonde updo, three angles' }
 ];
 
 /* -----------------------------------------------------------------------------
-   6. REVIEWS  —  PLACEHOLDER: swap for real Google reviews.
+   6. REVIEWS  -  real Google reviews, quoted verbatim.
+
+   Google truncates longer reviews behind a "more" link, so several of these
+   end mid-sentence with an ellipsis - that is the actual visible text, not an
+   edit. Do not complete them by hand.
+
+   Two further five-star reviews (Andrew Leonhard, JAndrew Hill) are left out
+   because they thank a barber named Steve, who is not one of the two barbers
+   listed in section 3. Add them back once that is sorted out.
    -------------------------------------------------------------------------- */
 const REVIEWS = [
-  { name: 'D. Harmon',  stars: 5, text: 'Best fade I have had in this town, full stop. Marcus took his time and the line was razor sharp.' },
-  { name: 'J. Ruiz',    stars: 5, text: 'Got the cut and shave. Hot towel, straight razor, the whole thing. Walked out feeling brand new.' },
-  { name: 'A. Whitley', stars: 5, text: 'Renae fixed a color another shop wrecked. Honest about what she could do and it came out perfect.' },
-  { name: 'S. Boone',   stars: 5, text: 'Took my two boys in on a Saturday. In and out, both cuts clean, no fuss.' }
+  { name: 'Nick Payne', stars: 5, when: '10 months ago',
+    text: 'Professional laid back atmosphere. Clean friendly vibes And fair prices. My vote best barber shop in Richmond Co.' },
+
+  { name: 'Dave C', stars: 5, when: '4 months ago',
+    text: "It's a nice clean friendly place and great sence of humor, they also gave me the best flat top I gotten in long time" },
+
+  { name: 'C High', stars: 5, when: 'a year ago',
+    text: 'Great group of barbers. Walk in available and not much of a wait. 2nd time using and ready like the hospitality. They make you feel welcome and take time giving…' },
+
+  { name: 'Miguel Wood', stars: 5, when: '8 months ago',
+    text: "If you're looking for a barber who is punctual, skilled, and passionate about their craft, look no further. This shop is worth every penny. I walked out feeling sharp and…" },
+
+  { name: 'Kimberly Fox', stars: 5, when: '5 months ago',
+    text: 'What an amazing shop. They were closed and my son has a bit of communication problem yet he took my son in with only a few…' },
+
+  { name: 'Bri Hunt', stars: 5, when: '3 years ago',
+    text: 'I took my 3 boys to get their hair cut. Ages 6-2. He done a great job! Very patient with my boys. He took his time and now their hair looks great! Friendly environment,…' },
+
+  { name: 'Archer Berzins', stars: 5, when: 'a year ago',
+    text: "So satisfied with them it was a great experience. Had a bit longer hair so I was reluctant to go to a barber as opposed to a stylist but I couldn't have been more wrong. I…" },
+
+  { name: 'Lori Nguyen', stars: 5, when: '4 years ago',
+    text: 'I brought my 2 year old son here to have his first hair cut. Seriously the nicest people I have ever met. He took his time with my son and was very patient with him. I…' }
 ];

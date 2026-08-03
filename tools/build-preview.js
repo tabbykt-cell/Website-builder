@@ -126,6 +126,26 @@ function asciiJs(s) {
   });
 }
 
+/* Photos live in assets/images/ and are referenced by relative path. A single
+   portable file has no such directory, so every image that exists on disk is
+   swapped for a data URI. Paths with no file behind them (the barber portraits,
+   until those are taken) are left alone so the page's own fallback still runs. */
+function inlineImages(str) {
+  const dir = path.join(ROOT, 'assets', 'images');
+  if (!fs.existsSync(dir)) return str;
+
+  fs.readdirSync(dir)
+    .filter(function (f) { return /\.(jpe?g|png)$/i.test(f); })
+    .forEach(function (file) {
+      const ref = 'assets/images/' + file;
+      if (str.indexOf(ref) === -1) return;
+      const mime = /\.png$/i.test(file) ? 'image/png' : 'image/jpeg';
+      const data = fs.readFileSync(path.join(dir, file)).toString('base64');
+      str = str.split(ref).join('data:' + mime + ';base64,' + data);
+    });
+  return str;
+}
+
 function between(html, startRe, endMarker) {
   const start = html.search(startRe);
   if (start === -1) throw new Error('could not find ' + startRe);
@@ -169,7 +189,7 @@ async function build() {
   // Every markup fragment goes through the same pass: ASCII-escape it, and
   // swap the logo file reference for an inline data URI.
   const prep = function (s) {
-    return asciiHtml(s).split('assets/img/logo.svg').join(logoUri);
+    return inlineImages(asciiHtml(s).split('assets/img/logo.svg').join(logoUri));
   };
 
   const sprite = prep(mergedSprite(indexHtml, bookHtml));
@@ -187,13 +207,13 @@ async function build() {
 
   const bookBar = prep(between(bookHtml, /<div class="book-bar"/, '</div>\n</div>'));
 
-  const js = asciiJs([
+  const js = inlineImages(asciiJs([
     'assets/js/data.js',
     'assets/js/availability.js',
     'assets/js/app.js',
     'assets/js/home.js',
     'assets/js/booking.js'
-  ].map(read).join('\n\n'));
+  ].map(read).join('\n\n')));
 
   // Meta first: without an explicit viewport a phone lays the page out at a
   // 980px desktop width and scales it down, which defeats the whole design.

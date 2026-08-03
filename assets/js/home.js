@@ -159,7 +159,9 @@
         '<blockquote class="review">' +
           '<div class="review__stars" aria-label="' + esc(r.stars) + ' out of 5 stars">' + stars + '</div>' +
           '<p class="review__text">' + esc(r.text) + '</p>' +
-          '<cite class="review__name">' + esc(r.name) + '</cite>' +
+          '<cite class="review__name">' + esc(r.name) +
+            (r.when ? '<span class="review__when">' + esc(r.when) + '</span>' : '') +
+          '</cite>' +
         '</blockquote>';
     }).join('');
   }

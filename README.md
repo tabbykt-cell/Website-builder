@@ -145,9 +145,28 @@ keep this wizard as the front end only.
 - Phone — (910) 331-4629
 - The two barbers — Chris and Kelby
 - Service names, taken verbatim from the Google Business listing
+- **Reviews** — eight real five-star Google reviews, quoted verbatim
+- **Photos** — the storefront sign as the hero, plus five shop photos in the
+  gallery. See `assets/images/README.md`
+- **Four prices**, read off the chalkboards in the shop photo:
+
+  | Service | Price |
+  |---|---|
+  | Hair Cut | $15 |
+  | Beard Trim | $10 |
+  | Hair Cut + Beard Trim | $20 |
+  | Hair Cut + Hot Towel Straight Razor Shave | $30 |
+
+  The $20 and $30 lines are fully legible. The $15 and $10 amounts are clear
+  but their labels are partly hidden behind the barber's arm, so those two
+  are worth double checking.
 
 **Still needs real information** — every item is marked `PLACEHOLDER` in `data.js`:
 
+- [ ] **The other 18 prices.** Estimated, but now scaled around the real $15
+      haircut rather than a guess. All still need confirming.
+- [ ] **Service durations.** Every one is an estimate. These matter more than
+      they look — the booking engine uses them to size appointment slots.
 - [ ] **Hours.** Only one data point is known: the listing read *"Closes 5 PM"*
       on a Monday afternoon, so weekdays are set to close at 5. Opening times
       and the weekend are assumptions. Fix `SHOP.hours` **and** `SCHEDULES`
@@ -156,18 +175,22 @@ keep this wizard as the front end only.
 - [ ] **Barber schedules.** Which days and hours Chris and Kelby each work.
 - [ ] **Barber titles, blurbs and specialties.** Currently deliberately generic
       wording rather than invented biography.
-- [ ] **Prices and durations.** Estimated from typical shop rates. Every one
-      needs confirming.
+- [ ] **Barber photos** — `barber-chris.jpg` and `barber-kelby.jpg`
 - [ ] **Email address** — currently `hello@bushwackerbarber.com`
-- [ ] **Photos** — see `assets/images/README.md`
-- [ ] **Reviews** — swap the placeholders for real Google reviews
 - [ ] **Social links** — Instagram and Facebook point at the homepages
 
-**One open question.** The sign reads BUSHWACKER BARBER SHOP / THE REFINERY
-ROOM. This is built as one business with two names. If The Refinery Room is
-actually a salon side with its own stylists, the colour and waxing services
-should be assigned to them — remove those IDs from Chris and Kelby's `skills`
-in `data.js` and the booking tool stops offering those two for them.
+**Two open questions**
+
+1. **Who is Steve?** Two five-star Google reviews thank a barber named Steve,
+   who is not Chris or Kelby. Those two reviews are left out of `REVIEWS` for
+   now — the other eight are in. Add them back once it is clear whether Steve
+   still cuts there.
+2. **Is The Refinery Room separate?** The sign reads BUSHWACKER BARBER SHOP /
+   THE REFINERY ROOM. This is built as one business with two names. If The
+   Refinery Room is a salon side with its own stylists, the colour and waxing
+   services should be assigned to them — remove those IDs from Chris and
+   Kelby's `skills` in `data.js` and the booking tool stops offering those two
+   for them.
 
 Duplicate entries on the Google listing (`Beard trim` / `Beard Trim`) were
 merged, and the rest grouped into four categories: Cuts, Shaves & Beard, Color

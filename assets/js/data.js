@@ -44,7 +44,11 @@ const SHOP = {
 
   social: {
     instagram: 'https://instagram.com/',  // PLACEHOLDER
-    facebook: 'https://facebook.com/',    // PLACEHOLDER
+    /* Share link supplied by the shop. The mibextid tracking parameter it
+       came with is stripped - it identifies the device that shared it and
+       does not belong in a public link. If the page has a plain vanity URL
+       (facebook.com/<name>), prefer that. */
+    facebook: 'https://www.facebook.com/share/195idqe3C3/',
     google: 'https://www.google.com/maps/search/?api=1&query=' +
             encodeURIComponent('Bushwacker Barber Shop, 801 E Broad Ave #11, Rockingham, NC 28379')
   },
@@ -208,7 +212,7 @@ const BARBERS = [
     id: 'chris',
     name: 'Chris',
     title: 'Barber',                                        // PLACEHOLDER
-    photo: 'assets/images/barber-chris.jpg',
+    photo: 'assets/images/barber-chris.jpg',   // supplied by the shop
     bio: 'Cuts, fades and beard work. Walk-ins welcome.',    // PLACEHOLDER
     specialties: ['Fades', 'Beard work', 'Straight razor'],  // PLACEHOLDER
     skills: ALL_SERVICE_IDS

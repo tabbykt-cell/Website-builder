@@ -146,8 +146,9 @@ keep this wizard as the front end only.
 - The two barbers — Chris and Kelby
 - Service names, taken verbatim from the Google Business listing
 - **Reviews** — eight real five-star Google reviews, quoted verbatim
-- **Photos** — the storefront sign as the hero, plus five shop photos in the
-  gallery. See `assets/images/README.md`
+- **Photos** — the storefront sign as the hero, five shop photos in the
+  gallery, and Chris's portrait. See `assets/images/README.md`
+- **Facebook** — the page the shop supplied
 - **Four prices**, read off the chalkboards in the shop photo:
 
   | Service | Price |
@@ -175,9 +176,9 @@ keep this wizard as the front end only.
 - [ ] **Barber schedules.** Which days and hours Chris and Kelby each work.
 - [ ] **Barber titles, blurbs and specialties.** Currently deliberately generic
       wording rather than invented biography.
-- [ ] **Barber photos** — `barber-chris.jpg` and `barber-kelby.jpg`
+- [ ] **Kelby's photo** — `barber-kelby.jpg`. Chris's is in.
 - [ ] **Email address** — currently `hello@bushwackerbarber.com`
-- [ ] **Social links** — Instagram and Facebook point at the homepages
+- [ ] **Instagram** — still points at the Instagram homepage
 
 **Two open questions**
 

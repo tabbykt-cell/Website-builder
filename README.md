@@ -248,6 +248,25 @@ throughout.
 
 ## Deploying
 
-Any static host works. For GitHub Pages: **Settings → Pages → Deploy from
-branch**, pick the branch and `/ (root)`. Netlify, Vercel and Cloudflare Pages
-need no configuration either — there is nothing to build.
+Any static host works — there is nothing to build.
+
+### GitHub Pages
+
+1. **Settings → Pages** in the repo
+2. Source: **Deploy from a branch**
+3. Branch: `claude/bushwacker-barber-website-ipj862`, folder: **/ (root)**
+4. **Save**, then wait a minute or two
+
+The site lands at **https://tabbykt-cell.github.io/Website-builder/**
+
+Every path in the site is relative, so serving from the `/Website-builder/`
+subpath works without changes. The empty `.nojekyll` file tells Pages to serve
+the files as-is instead of running them through Jekyll.
+
+Note that the repository is public, so everything in it — including the client
+photos — is publicly readable once pushed, whether or not Pages is switched on.
+
+### Anywhere else
+
+Netlify, Vercel and Cloudflare Pages need no configuration: point them at the
+repo, leave the build command empty and the publish directory as the root.
